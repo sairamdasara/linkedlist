@@ -1,0 +1,44 @@
+class Node
+{
+    int data;
+    Node next;
+
+    Node(int value)
+    {
+        data = value;
+        next = null;
+    }
+
+    public static void main(String[] args)
+    {
+        Node head = new Node(10);
+        Node second = new Node(20);
+        Node third = new Node(30);
+        Node four = new Node(40);
+        head.next = second;
+        second.next = third;
+        third.next = four;
+        int key = 20;
+        int index = 0;
+        Node temp = head;
+        boolean found = false;
+        while (temp != null) {
+            if (temp.data == key) {
+                found = true;
+                break;
+            }
+            temp = temp.next;
+            index++;
+        }
+
+        if (found) {
+            System.out.print(key + "found at index" + index);
+        }
+    
+    else
+
+    {
+        System.out.print("not found");
+    }
+}
+}
