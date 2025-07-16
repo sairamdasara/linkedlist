@@ -1,0 +1,86 @@
+class Node {
+    int data;
+    Node next;
+
+    Node(int value) {
+        data = value;
+        next = null;
+    }
+
+    public static void main(String[] args) {
+        // Creating the list: 10 → 20 → 30 → 40 → 50 → 60
+        Node head = new Node(10);
+        Node second = new Node(20);
+        Node third = new Node(30);
+        Node four = new Node(40);
+        Node five = new Node(50);
+        Node six = new Node(60);
+        head.next = second;
+        second.next = third;
+        third.next = four;
+        four.next = five;
+        five.next = six;
+
+        int k = 3;
+
+        // Step 1: Count total length
+        int length = 0;
+        Node temp = head;
+        while (temp != null) {
+            length++;
+            temp = temp.next;
+        }
+
+        // Step 2: Reverse first k group
+        Node prev = null;
+        Node current = head;
+        Node next = null;
+        int count = 0;
+
+        while (count < k && current != null) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+            count++;
+        }
+
+        Node tail1 = head; // tail of first reversed group
+        tail1.next = null;
+
+        // Step 3: Reverse second k group
+        Node prev2 = null;
+        Node current2 = current;
+        Node next2 = null;
+        int count2 = 0;
+
+        while (count2 < k && current2 != null) {
+            next2 = current2.next;
+            current2.next = prev2;
+            prev2 = current2;
+            current2 = next2;
+            count2++;
+        }
+
+        // Step 4: Link the groups
+        tail1.next = prev2;
+
+        // Step 5: Link remaining list
+        Node tail2 = tail1.next;
+        while (tail2 != null && tail2.next != null) {
+            tail2 = tail2.next;
+        }
+
+        if (tail2 != null) {
+            tail2.next = current2;
+        }
+
+        // Step 6: Print final list
+        Node newhead = prev; // new head after first reversal
+        while (newhead != null) {
+            System.out.print(newhead.data + " -> ");
+            newhead = newhead.next;
+        }
+        System.out.println("null");
+    }
+}
