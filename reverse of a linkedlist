@@ -1,0 +1,47 @@
+class Node
+{
+    int data;
+    Node next;
+    Node(int value)
+    {
+        data=value;
+        next=null;
+    }
+
+    public static void main(String[] args) {
+        Node head=new Node(10);
+        Node second=new Node(20);
+        Node third=new Node(30);
+        Node four=new Node(40);
+        head.next=second;
+        second.next=third;
+        third.next=four;
+        Node temp=head;
+        while(temp!=null)
+        {
+            System.out.print(temp.data+"->");
+            temp=temp.next;
+        }
+        System.out.println("null");
+
+        Node prev=null;
+        Node current=head;
+        Node next=null;
+        while(current!=null)
+        {
+            next=current.next;
+            current.next=prev;
+            prev=current;
+            current=next;
+        }
+        head=prev;
+
+        Node t=head;
+        while(t!=null)
+        {
+            System.out.print(t.data+"->");
+            t=t.next;
+        }
+        System.out.println("null");
+    }
+}
