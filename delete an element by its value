@@ -1,0 +1,40 @@
+class Node
+{
+    int data;
+    Node next;
+    Node(int value)
+    {
+        data=value;
+        next=null;
+    }
+
+    public static void main(String[] args) {
+        Node head=new Node(10);
+        Node second=new Node(20);
+        Node third=new Node(30);
+        head.next=second;
+        second.next=third;
+        int key=20;
+        Node temp=head;
+        if (head != null && head.data == key) {
+            head = head.next;
+        }
+        else {
+
+
+            while (temp != null && temp.next != null) {
+                if (temp.next.data == key) {
+                    temp.next = temp.next.next;
+                    break;
+                }
+                temp = temp.next;
+            }
+        }
+        Node t = head;
+        while (t != null) {
+            System.out.print(t.data + " -> ");
+            t = t.next;
+        }
+        System.out.print("null");
+    }
+}
