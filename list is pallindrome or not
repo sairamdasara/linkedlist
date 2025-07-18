@@ -1,0 +1,58 @@
+class Node
+{
+    int data;
+    Node next;
+    Node(int value)
+    {
+        data=value;
+        next=null;
+    }
+
+    public static void main(String[] args) {
+        Node head=new Node(10);
+        Node second=new Node(20);
+        Node third=new Node(20);
+        Node four=new Node(10);
+        head.next=second;
+        second.next=third;
+        third.next=four;
+        Node slow=head;
+        Node fast=head;
+        boolean ispallindrome=false;
+        while(fast!=null&&fast.next!=null&& fast.next.next!=null)
+        {
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        Node prev=null;
+        Node next=null;
+        Node current=slow.next;
+        while(current!=null)
+        {
+            next=current.next;
+            current.next=prev;
+            prev=current;
+            current=next;
+        }
+        Node t=head;
+        Node h=prev;
+        while(prev!=null)
+        {
+            if(t.data!=h.data)
+            {
+                ispallindrome=false;
+                break;
+            }
+            t=t.next;
+            h=h.next;
+        }
+        if(ispallindrome)
+        {
+            System.out.print("pallindrome");
+        }
+        else
+        {
+            System.out.print("not pallaindrome" );
+        }
+    }
+}
