@@ -1,0 +1,50 @@
+
+class Node
+{
+    int data;
+    Node next;
+    Node(int value)
+    {
+        data=value;
+        next=null;
+    }
+
+    public static void main(String[] args) {
+        Node head=new Node(10);
+        Node second=new Node(20);
+        Node third=new Node(30);
+        Node four=new Node(40);
+        head.next=second;
+        second.next=third;
+        third.next=four;
+        four.next=second;
+
+        Node slow=head;
+        Node fast=head;
+        boolean hasloop=false;
+        while(fast!=null&&fast.next!=null)
+        {
+            slow=slow.next;
+            fast=fast.next.next;
+            if(slow==fast)
+            {
+                hasloop=true;
+                break;
+            }
+        }
+        if(hasloop)
+        {
+             slow=head;
+             while(slow!=fast)
+             {
+                 slow=slow.next;
+                 fast=fast.next;
+             }
+             System.out.print("loop start at"+slow.data);
+        }
+        else
+        {
+            System.out.print("no loop");
+        }
+    }
+}
