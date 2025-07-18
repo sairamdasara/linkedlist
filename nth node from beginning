@@ -1,0 +1,31 @@
+class Node
+{
+    int data;
+    Node next;
+    Node(int value)
+    {
+        data=value;
+        next=null;
+    }
+
+    public static void main(String[] args) {
+        Node head=new Node(10);
+        Node second=new Node(20);
+        Node third=new Node(30);
+        Node four=new Node(40);
+        head.next=second;
+        second.next=third;
+        third.next=four;
+        int count=0,n=3;
+        Node temp=head;
+        while(temp!=null)
+        {
+            count++;
+            if(count==n)
+            {
+                System.out.print("nth node"+temp.data);
+            }
+            temp=temp.next;
+        }
+    }
+}
