@@ -1,0 +1,43 @@
+class Node
+{
+    int data;
+    Node next;
+    Node(int value)
+    {
+        data=value;
+        next=null;
+    }
+
+    public static void main(String[] args) {
+        Node head=new Node(10);
+        Node second=new Node(20);
+        Node third=new Node(30);
+        head.next=second;
+        second.next=third;
+
+        Node temp=head;
+        Node clonehead=null;
+        Node clonetail=null;
+        while(temp!=null)
+        {
+            Node newnode=new Node(temp.data);
+            if(clonehead==null)
+            {
+                clonehead=newnode;
+                clonetail=newnode;
+            }
+            else {
+                clonetail.next=newnode;
+                clonetail=newnode;
+            }
+            temp=temp.next;
+        }
+        Node t=clonehead;
+        while(t!=null)
+        {
+            System.out.print(t.data+"->");
+            t=t.next;
+        }
+        System.out.print("null");
+    }
+}
