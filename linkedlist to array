@@ -1,0 +1,39 @@
+class Node
+{
+    int data;
+    Node next;
+    Node(int value)
+    {
+        data=value;
+        next=null;
+    }
+
+    public static void main(String[] args) {
+        Node head=new Node(10);
+        Node second=new Node(20);
+        Node third=new Node(30);
+        Node four=new Node(40);
+        head.next=second;
+        second.next=third;
+        third.next=four;
+        Node temp=head;
+        int count=0;
+        while(temp!=null)
+        {
+            count++;
+            temp=temp.next;
+        }
+        int arr[]=new int[count];
+        temp=head;
+        int i=0;
+        while(temp!=null)
+        {
+            arr[i++]=temp.data;
+            temp=temp.next;
+        }
+        for(int k:arr)
+        {
+            System.out.print(k+" ");
+        }
+    }
+}
